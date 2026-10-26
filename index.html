@@ -3,26 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Notedis Widget Test</title>
+  <title>Userowl Widget Test</title>
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; font-family: system-ui,-apple-system,Segoe UI,sans-serif; background:#f8fafc; color:#0f172a; display:grid; place-items:center; padding:24px; }
-    main { max-width:600px; width:100%; padding:34px; border-radius:18px; background:white; box-shadow:0 8px 36px rgba(15,23,42,.08); }
-    h1 { font-size:26px; margin:0 0 12px; } p { line-height:1.6; color:#475569; }
+    :root{font-family:Arial,Helvetica,sans-serif;color-scheme:light}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:#f6f7fb;color:#202436;display:grid;place-items:center;padding:24px}
+    main{max-width:590px;width:100%;background:#fff;border-radius:18px;padding:32px;box-shadow:0 12px 36px rgba(30,38,70,.09)}
+    h1{font-size:25px;margin:0 0 12px}p{line-height:1.55;color:#626b7e}button{padding:13px 19px;background:#343b8f;border:0;color:white;border-radius:10px;font-size:15px;cursor:pointer}button:hover{background:#272e78}
+    small{display:block;margin-top:16px;color:#7e8594}
   </style>
   <script>
-    window.notedisConfig = {
-      siteKey: 'site_VA6cJUX4h2Ck6S3FFfpCy5tkODu2v2e7',
-      apiUrl: 'https://notedis.com'
-    };
+    // Userowl official installation snippet. APP ID supplied by project owner.
+    var APP_ID = '6adf27e10eb65054a94f3f2d';
+    window.UserowlSettings = { appId: APP_ID };
+    (function() {
+      var w = window;
+      var uo = w.Userowl = w.Userowl || [];
+      uo.methods = ["open", "close", "identify"];
+      w.UserowlQueue = [];
+      uo.f = function(c) {
+        return function() {
+          var args = Array.prototype.slice.call(arguments);
+          window.UserowlQueue.push({ c: c, a: args });
+        };
+      };
+      for (var i = 0; i < uo.methods.length; i++) {
+        uo[uo.methods[i]] = uo.f(uo.methods[i]);
+      }
+      var d = document;
+      var s = d.createElement('script');
+      s.async = true;
+      s.src = 'https://app.userowl.com/static/widget.js';
+      (d.head || d.body).appendChild(s);
+    })();
   </script>
-  <script src="https://notedis.com/js/widget.js" defer></script>
 </head>
 <body>
   <main>
-    <h1>Notedis feedback test</h1>
-    <p>This is a temporary page for testing the Notedis widget.</p>
-    <p>Click the feedback button in the bottom-right corner to submit a test report.</p>
+    <h1>Userowl — Feedback Test</h1>
+    <p>This is a temporary test page for submitting feedback through the Userowl widget.</p>
+    <button type="button" onclick="window.Userowl && window.Userowl.open && window.Userowl.open()">Open feedback form</button>
+    <small>If the form doesn't open, check the Userowl widget settings and browser console (F12).</small>
   </main>
 </body>
 </html>
+
