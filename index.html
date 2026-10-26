@@ -8,27 +8,21 @@
     * { box-sizing: border-box; }
     body { margin: 0; min-height: 100vh; font-family: system-ui,-apple-system,Segoe UI,sans-serif; background:#f8fafc; color:#0f172a; display:grid; place-items:center; padding:24px; }
     main { max-width:600px; width:100%; padding:34px; border-radius:18px; background:white; box-shadow:0 8px 36px rgba(15,23,42,.08); }
-    h1 { font-size:26px; margin:0 0 12px; } p { line-height:1.6; color:#475569; } code { background:#f1f5f9; padding:3px 6px; border-radius:4px; }
+    h1 { font-size:26px; margin:0 0 12px; } p { line-height:1.6; color:#475569; }
   </style>
+  <script>
+    window.notedisConfig = {
+      siteKey: 'site_VA6cJUX4h2Ck6S3FFfpCy5tkODu2v2e7',
+      apiUrl: 'https://notedis.com'
+    };
+  </script>
+  <script src="https://notedis.com/js/widget.js" defer></script>
 </head>
 <body>
   <main>
     <h1>Notedis feedback test</h1>
     <p>This is a temporary page for testing the Notedis widget.</p>
     <p>Click the feedback button in the bottom-right corner to submit a test report.</p>
-    <p id="setup-warning" hidden><strong>Setup required:</strong> Replace <code>YOUR_SITE_KEY_HERE</code> in <code>index.html</code> with your Notedis Site Key, then redeploy.</p>
   </main>
-  <script>
-    window.notedisConfig = {
-      siteKey: 'YOUR_SITE_KEY_HERE',
-      apiUrl: 'https://notedis.com',
-      position: 'bottom-right',
-      color: '#3B82F6'
-    };
-    if (window.notedisConfig.siteKey === 'site_VA6cJUX4h2Ck6S3FFfpCy5tkODu2v2e7') {
-      document.getElementById('setup-warning').hidden = false;
-    }
-  </script>
-  <script src="https://notedis.com/js/widget.js" defer></script>
 </body>
 </html>
