@@ -3,48 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Userowl Widget Test</title>
+  <title>Proofyard Feedback Test</title>
   <style>
-    :root{font-family:Arial,Helvetica,sans-serif;color-scheme:light}
-    *{box-sizing:border-box}
-    body{margin:0;min-height:100vh;background:#f6f7fb;color:#202436;display:grid;place-items:center;padding:24px}
-    main{max-width:590px;width:100%;background:#fff;border-radius:18px;padding:32px;box-shadow:0 12px 36px rgba(30,38,70,.09)}
-    h1{font-size:25px;margin:0 0 12px}p{line-height:1.55;color:#626b7e}button{padding:13px 19px;background:#343b8f;border:0;color:white;border-radius:10px;font-size:15px;cursor:pointer}button:hover{background:#272e78}
-    small{display:block;margin-top:16px;color:#7e8594}
+    body { font: 16px/1.5 system-ui, sans-serif; margin: 0; background: #f7f8fb; color: #202533; }
+    main { max-width: 680px; margin: 12vh auto; padding: 32px; background: white; border-radius: 16px; box-shadow: 0 8px 30px #16213a12; }
+    h1 { margin-top: 0; }
   </style>
-  <script>
-    // Userowl official installation snippet. APP ID supplied by project owner.
-    var APP_ID = '6adf27e10eb65054a94f3f2d';
-    window.UserowlSettings = { appId: APP_ID };
-    (function() {
-      var w = window;
-      var uo = w.Userowl = w.Userowl || [];
-      uo.methods = ["open", "close", "identify"];
-      w.UserowlQueue = [];
-      uo.f = function(c) {
-        return function() {
-          var args = Array.prototype.slice.call(arguments);
-          window.UserowlQueue.push({ c: c, a: args });
-        };
-      };
-      for (var i = 0; i < uo.methods.length; i++) {
-        uo[uo.methods[i]] = uo.f(uo.methods[i]);
-      }
-      var d = document;
-      var s = d.createElement('script');
-      s.async = true;
-      s.src = 'https://app.userowl.com/static/widget.js';
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
 </head>
 <body>
   <main>
-    <h1>Userowl — Feedback Test</h1>
-    <p>This is a temporary test page for submitting feedback through the Userowl widget.</p>
-    <button type="button" onclick="window.Userowl && window.Userowl.open && window.Userowl.open()">Open feedback form</button>
-    <small>If the form doesn't open, check the Userowl widget settings and browser console (F12).</small>
+    <h1>Feedback Test</h1>
+    <p>This is a test page for the Proofyard feedback widget.</p>
+    <p>Please use the feedback button if it is available.</p>
   </main>
+  <script src="https://app.woofocus.com/embed.js?key=19cf39d38fdcce1d3f3964a71e0b14b4df1d" async></script>
 </body>
 </html>
-
