@@ -1,40 +1,78 @@
 
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>SnagRelay — Widget Test</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="Saber Feedback widget test page">
+  <title>Saber Feedback | Test Page</title>
   <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh; display: grid; place-items: center;
-      background: #101116; color: #f7f7f9;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    }
-    main {
-      width: min(560px, calc(100% - 36px));
-      padding: 38px; border: 1px solid #292b35;
-      border-radius: 22px; background: #191b23;
-    }
-    .pill { display: inline-block; padding: 7px 11px; border-radius: 999px;
-      background: #2c2233; color: #eeb1dc; font-size: 12px;
-      font-weight: 700; letter-spacing: .06em; }
-    h1 { font-size: clamp(25px, 5vw, 36px); margin: 18px 0 12px; line-height: 1.18; }
-    p { color: #bfc0cb; font-size: 16px; line-height: 1.65; margin: 0; }
-    small { display: block; margin-top: 25px; color: #858695; font-size: 13px; }
-    @media (max-width: 500px) { main { padding: 26px; } }
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body { margin: 0; background: radial-gradient(ellipse 80% 55% at 50% -10%, #321124 0, transparent 75%), #101014; color: #f6f3f5; display: grid; place-items: center; padding: 24px; }
+    main { width: min(100%, 560px); background: #19191f; border: 1px solid #323039; border-radius: 24px; padding: clamp(28px, 6vw, 48px); box-shadow: 0 24px 80px #0005; }
+    .kicker { display: inline-flex; align-items: center; gap: 10px; color: #edbddb; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 700; }
+    .dot { height: 9px; width: 9px; border-radius: 50%; background: #ad3c83; box-shadow: 0 0 0 4px #ad3c8329; }
+    h1 { margin: 22px 0 12px; font-size: clamp(32px, 6vw, 48px); line-height: 1.08; letter-spacing: -.045em; }
+    p { color: #bdb7c1; line-height: 1.65; font-size: 16px; margin: 0; }
+    button { appearance: none; border: 0; background: #7f0353; color: #fff; font: inherit; font-weight: 700; border-radius: 13px; padding: 16px 22px; width: 100%; margin-top: 28px; cursor: pointer; transition: background .15s, transform .15s; }
+    button:hover { background: #a3096c; transform: translateY(-1px); }
+    button:focus-visible { outline: 3px solid #f7a5d9; outline-offset: 4px; }
+    .status { margin-top: 22px; padding-top: 20px; border-top: 1px solid #353039; display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #bbb4be; }
+    .status .indicator { display: inline-block; flex: 0 0 auto; height: 8px; width: 8px; margin-top: 5px; border-radius: 50%; background: #f0bb60; }
+    .status.ready .indicator { background: #68d29b; }
+    small { display: block; margin-top: 16px; font-size: 12px; color: #938b98; line-height: 1.5; }
   </style>
-  <script src="https://app.snagrelay.com/widget/load/94a44d0e-b631-4652-b73d-ecb0ba0fab33" async></script>
+  <!-- Saber Feedback widget: original API key and official v2 script -->
+  <script type="text/javascript">
+    (function(){
+      window.Saber={
+          apiKey: "4c78f53549a747cad1a2",
+          com:[],do:function(){this.com.push(arguments)}
+      };
+      var e = document.createElement("script");
+      e.setAttribute("type", "text/javascript");
+      e.setAttribute("src", "https://widget.saberfeedback.com/v2/widget.js");
+      document.getElementsByTagName("head")[0].appendChild(e);
+      Saber.do('set_option', 'on_ready', function () {
+        function showReady() {
+          var element = document.getElementById('widget-status');
+          if (!element) return;
+          element.classList.add('ready');
+          element.querySelector('.status-text').textContent = 'Widget loaded. You can submit feedback.';
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', showReady, { once: true });
+        } else {
+          showReady();
+        }
+      });
+    })();
+  </script>
+  <!-- End Saber Feedback widget -->
 </head>
 <body>
   <main>
-    <span class="pill">SNAGRELAY · TEST PAGE</span>
-    <h1>Проверка виджета</h1>
-    <p>На этой странице подключён SnagRelay. Откройте кнопку виджета, укажите тестовый email и отправьте баг-репорт.</p>
-    <small>Это тестовая страница. Внешний вид, поля и отправка управляются настройками SnagRelay.</small>
+    <div class="kicker"><span class="dot" aria-hidden="true"></span> FEEDBACK FORM</div>
+    <h1>Send us your feedback.</h1>
+    <p>Found an issue or have a suggestion? Open the form to send feedback through Saber Feedback.</p>
+    <button type="button" id="open-feedback">Open feedback form</button>
+    <div id="widget-status" class="status" role="status" aria-live="polite">
+      <span class="indicator" aria-hidden="true"></span>
+      <span class="status-text">Loading Saber Feedback widget…</span>
+    </div>
+    <small>The feedback form is provided by Saber Feedback. Its fields, destination, and notification rules are managed in your Saber Feedback account.</small>
   </main>
+  <script>
+    document.getElementById('open-feedback').addEventListener('click', function () {
+      if (window.Saber && typeof window.Saber.do === 'function') {
+        window.Saber.do('open');
+      }
+    });
+  </script>
 </body>
 </html>
