@@ -20,11 +20,27 @@
   </style>
 <!-- Start of Wiremo script -->
 <!-- Start of Wiremo script -->
-<script>!function(){var e=document.getElementById("wiremo-widget")?document.getElementById("wiremo-widget").dataset:{},
-t=window.wiremo_config?new window.wiremo_config:{},n={reviewSource:location.pathname,identifier:location.pathname},o=document.createElement("script");
-for(var i in t)n[i]=t[i];for(var i in e)n[i]=e[i]?e[i]:n[i];
-o.type="text/javascript",o.async=!0,o.src="https://wapi.wiremo.co/v2/script?k=6ae4ae529d197762628e462e&w="+encodeURIComponent(JSON.stringify(n));
-var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)}();</script>
+<!-- // BEGIN // Fera.ai Integration Code - DO NOT MODIFY // -->
+<script type="application/javascript">
+  window.fera = window.fera || [];
+  (function(){
+    // Fera App Embed v1 
+    const apiKey = "pk_8f65cbe7894987e20bb8dcc17e93087d5cfaf21e6d8e0cf1060c91186e68190a";
+    const apiUrl = null;
+    const baseCdnUrl = `https://cdn.fera.ai/js/v3/`;
+    window.fera.push("configure", { api_key: apiKey });
+    if (!document.querySelector('#fera_css')) {
+      const element = document.createElement('link');element.href = `${ baseCdnUrl }fera.css`;element.id = "fera_css";element.rel = 'stylesheet';document.head.prepend(element);
+    }
+
+    if (apiUrl) window.fera.push("configure", { api_url: apiUrl, api_cdn_url: apiUrl });
+    if (!(window.fera && !Array.isArray(window.fera)) && !document.querySelector('#fera_js')) {
+      const element = document.createElement('script');element.src = `${ baseCdnUrl }fera.js`;element.id = "fera_js";element.async = true; document.body.append(element);
+    }
+  })();
+</script>
+<!-- // END // Fera.ai Integration Code // -->
+
 <!-- End of Wiremo Script -->
 <!-- End of Wiremo Script -->
 </head>
