@@ -57,6 +57,13 @@
       const apiUrl = null;
       const baseCdnUrl = `https://cdn.fera.ai/js/v3/`;
       window.fera.push("configure", { api_key: apiKey });
+
+      // Required on custom HTML sites: tell Fera which product this page shows.
+      window.fera.push("setProduct", {
+        id: "13413",
+        name: "Test Product 13413",
+        url: window.location.origin + window.location.pathname
+      });
       if (!document.querySelector('#fera_css')) {
         const element = document.createElement('link');element.href = `${ baseCdnUrl }fera.css`;element.id = "fera_css";element.rel = 'stylesheet';document.head.prepend(element);
       }
