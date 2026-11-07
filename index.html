@@ -1,61 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>PoshInfo — Enlorix Email Test</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annot8 — Widget Test</title>
   <style>
-    :root { color-scheme: light; --ink: #17212b; --muted: #667487; --accent: #117d77; --line: #dfe8e7; --bg: #eef5f3; }
+    :root { color-scheme: dark; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: var(--bg); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); }
-    header { background: #fff; border-bottom: 1px solid var(--line); }
-    .bar { width: min(100% - 32px, 850px); margin: auto; min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 19px; }
-    .mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; color: #fff; background: var(--accent); font-weight: 800; }
-    .tag { font-size: 12px; color: #536b66; background: #e5f3f1; padding: 7px 10px; border-radius: 20px; }
-    main { width: min(100% - 32px, 850px); margin: 45px auto 70px; }
-    h1 { margin: 0 0 11px; font-size: clamp(27px, 5vw, 40px); letter-spacing: -.035em; line-height: 1.2; }
-    .desc { max-width: 670px; color: var(--muted); line-height: 1.65; margin: 0 0 30px; }
-    .card { padding: clamp(20px, 5vw, 38px); border: 1px solid var(--line); border-radius: 20px; background: white; box-shadow: 0 18px 55px #223d3b0b; }
-    .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 21px; }
-    h2 { font-size: 20px; letter-spacing: -.02em; margin: 0; }
-    .badge { background: #f4f5f7; color: #596475; border: 1px solid #e7e9ed; font-size: 12px; padding: 7px 11px; border-radius: 99px; }
-    .embed { min-height: 190px; }
-    .empty { padding: 32px 22px; border: 1px dashed #b6c9c5; border-radius: 14px; background: #f8fbfa; text-align: center; line-height: 1.6; }
-    .empty strong { display: block; font-size: 17px; margin-bottom: 9px; }
-    .empty p { color: var(--muted); margin: 0 auto 8px; max-width: 550px; }
-    code { font-size: 12px; background: #eaf0f0; border-radius: 4px; padding: 2px 5px; word-break: break-word; }
-    .foot { font-size: 13px; color: var(--muted); margin-top: 20px; line-height: 1.6; }
-    a { color: #096e69; }
-    @media (max-width: 500px) { main { margin-top: 30px; } .bar { min-height: 66px; } }
+    body { margin: 0; min-height: 100vh; background: #0b1020; color: #eaf0ff; display: grid; place-items: center; padding: 24px; }
+    .card { width: min(100%, 680px); background: #161e33; padding: 36px; border: 1px solid #2d3854; border-radius: 20px; box-shadow: 0 16px 48px #0004; }
+    .eyebrow { color: #9caeff; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 12px 0; font-size: clamp(26px, 5vw, 38px); }
+    p { color: #b4bfd7; line-height: 1.65; }
+    button { margin-top: 16px; cursor: pointer; background: #7185ff; border: 0; border-radius: 10px; padding: 12px 18px; color: #fff; font: inherit; font-weight: 600; }
+    button:hover { background: #6175f2; }
+    #result { color: #bbf7d0; min-height: 24px; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="bar">
-      <div class="brand"><span class="mark">P</span>PoshInfo</div>
-      <span class="tag">Enlorix integration test</span>
-    </div>
-  </header>
-  <main>
-    <h1>Test Enlorix notifications</h1>
-    <p class="desc">Submit the embedded form using an email inbox you control. Enlorix will receive the form submission and send the configured notification if it is enabled.</p>
-    <section class="card" aria-label="Enlorix test form">
-      <div class="card-head">
-        <h2>Test form</h2>
-        <span class="badge">Powered by Enlorix</span>
-      </div>
-      <div class="embed">
-        <!-- START ENLORIX EMBED -->
-        <div data-enlorix-form="19"></div>
-        <script src="https://poshinfo.enlorix.io/embed/forms.js" defer></script>
-        <noscript>Please enable JavaScript to load the Enlorix form.</noscript>
-        <!-- END ENLORIX EMBED -->
-      </div>
-      <p class="foot">Real results are checked in <b>Enlorix → Forms → Submission History</b> and in the recipient’s inbox. This page cannot confirm email delivery on its own.</p>
-    </section>
-    <p class="foot">Note: embedded general forms test form-submission emails, not the separate Website reviews → Reply notification workflow.</p>
+  <main class="card">
+    <div class="eyebrow">Annot8 / Test Page</div>
+    <h1>Feedback Widget Test</h1>
+    <p>This page is for testing the Annot8 widget. Open the widget and leave feedback on any element to test your project notifications.</p>
+    <button id="demoButton" type="button">Test Button</button>
+    <p id="result" aria-live="polite"></p>
   </main>
+
+  <script>
+    document.getElementById('demoButton').addEventListener('click', function () {
+      document.getElementById('result').textContent = 'Button works!';
+    });
+  </script>
+
+  <!-- Annot8: original installation snippet -->
+  <script
+    src="https://www.annot8.app/widget.js"
+    data-project-id="pj_8sCSQfNL6gyiWMINWidFmz7x"
+    data-convex-url="https://superb-snail-880.convex.cloud"
+    data-dashboard-url="https://www.annot8.app"
+    async
+  ></script>
 </body>
 </html>
+
