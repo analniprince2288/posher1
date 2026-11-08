@@ -1,45 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Annot8 — Widget Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#101319">
+  <title>Nootiz • тестовая страница для комментариев</title>
+  <meta name="description" content="Независимая тестовая страница для проверки комментариев nootiz. Не является официальным сайтом сервиса.">
+  <!-- Сниппет пользователя: сохранён без изменений. -->
+  <script defer src="https://load.nootiz.com/6885dfb2-ff26-4c49-9062-197cb118a7e1"></script>
   <style>
-    :root { color-scheme: dark; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: #0b1020; color: #eaf0ff; display: grid; place-items: center; padding: 24px; }
-    .card { width: min(100%, 680px); background: #161e33; padding: 36px; border: 1px solid #2d3854; border-radius: 20px; box-shadow: 0 16px 48px #0004; }
-    .eyebrow { color: #9caeff; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-    h1 { margin: 12px 0; font-size: clamp(26px, 5vw, 38px); }
-    p { color: #b4bfd7; line-height: 1.65; }
-    button { margin-top: 16px; cursor: pointer; background: #7185ff; border: 0; border-radius: 10px; padding: 12px 18px; color: #fff; font: inherit; font-weight: 600; }
-    button:hover { background: #6175f2; }
-    #result { color: #bbf7d0; min-height: 24px; }
+    :root{color-scheme:dark;--bg:#0b0d12;--panel:#151922;--panel2:#1b202b;--line:#29303d;--muted:#9ca6b6;--text:#e8edf6;--accent:#a3b9ff;--good:#83dbc5;--radius:18px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1e2435 0%,transparent 42%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    a{color:var(--accent)}
+    .wrap{width:min(1100px,calc(100% - 40px));margin:0 auto}
+    header{padding:24px 0;border-bottom:1px solid var(--line)}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .brand{font-size:18px;font-weight:740;letter-spacing:-.03em}
+    .tag{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--good);background:#18342f;border:1px solid #315e50;border-radius:50px;padding:7px 11px}
+    main{padding:64px 0 74px}
+    .eyebrow{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    h1{font-size:clamp(34px,5.2vw,62px);letter-spacing:-.055em;line-height:1.11;margin:14px 0 20px;max-width:860px}
+    .lead{font-size:18px;color:var(--muted);max-width:790px;margin:0 0 34px}
+    .overview{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(270px,1fr);gap:18px;margin-top:38px}
+    .card{padding:27px;background:linear-gradient(145deg,var(--panel),#11151d);border:1px solid var(--line);border-radius:var(--radius);min-width:0}
+    .card h2{font-size:20px;line-height:1.3;letter-spacing:-.025em;margin:0 0 12px}
+    .card p{color:var(--muted);margin:0 0 20px}
+    .card p:last-child{margin-bottom:0}
+    .steps{counter-reset:step;display:grid;gap:15px;margin:18px 0 0;padding:0;list-style:none}
+    .steps li{counter-increment:step;display:flex;gap:14px;align-items:flex-start}
+    .steps li:before{content:counter(step);background:#262f45;color:var(--accent);border:1px solid #3b4660;width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:9px;font-size:13px;font-weight:750}
+    .steps span{color:var(--muted)}
+    .button{appearance:none;background:#a9bdff;color:#101626;border:1px solid #a9bdff;padding:12px 18px;border-radius:11px;font:inherit;font-weight:760;cursor:pointer}
+    .button:hover{filter:brightness(1.07)}
+    .button.secondary{background:#202736;border-color:#3b465d;color:#e6ebf5}
+    .button:focus-visible{outline:3px solid var(--good);outline-offset:3px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .section-heading{display:flex;justify-content:space-between;gap:20px;align-items:end;margin:55px 0 17px}
+    .section-heading h2{font-size:26px;letter-spacing:-.04em;line-height:1.2;margin:0}
+    .section-heading p{margin:0;color:var(--muted);font-size:14px}
+    .demo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .demo-grid .card{min-height:238px}
+    .demo-id{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.13em;margin-bottom:22px}
+    .swatch{height:88px;border-radius:13px;background:linear-gradient(125deg,#5845c9,#d07fc0);margin-bottom:20px;border:1px solid #8e7fd9}
+    .swatch.s2{background:linear-gradient(125deg,#1d4e75,#7bbfa4);border-color:#447a8a}
+    .swatch.s3{background:linear-gradient(125deg,#82552d,#c69b6c);border-color:#9c744d}
+    .full{margin-top:16px}
+    .status{display:inline-block;color:var(--good);font-weight:700}
+    .feedback{font-size:14px;color:var(--muted);margin-top:13px;min-height:22px}
+    footer{border-top:1px solid var(--line);padding:24px 0 34px;color:var(--muted);font-size:13px}
+    code{background:var(--panel2);padding:2px 6px;border-radius:5px;color:var(--accent);overflow-wrap:anywhere}
+    @media(max-width:770px){main{padding:40px 0 55px}.overview{grid-template-columns:1fr}.demo-grid{grid-template-columns:1fr}.section-heading{display:block}.card{padding:22px}.section-heading p{margin-top:8px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="eyebrow">Annot8 / Test Page</div>
-    <h1>Feedback Widget Test</h1>
-    <p>This page is for testing the Annot8 widget. Open the widget and leave feedback on any element to test your project notifications.</p>
-    <button id="demoButton" type="button">Test Button</button>
-    <p id="result" aria-live="polite"></p>
+  <header><div class="wrap top"><div class="brand">Nootiz / QA Playground</div><span class="tag">Внешний тестовый сайт</span></div></header>
+  <main class="wrap">
+    <div class="eyebrow" id="test-title">Проверка интеграции</div>
+    <h1>Тестовая страница для заметок Nootiz</h1>
+    <p class="lead" id="hero-description">Скрипт Nootiz уже встроен. Здесь есть заголовки, карточки, блоки дизайна и кнопка — на них удобно оставлять визуальные комментарии и проверять, появляются ли записи в проекте.</p>
+
+    <div class="overview">
+      <section class="card" id="how-to-test">
+        <h2>Как проверить комментарий</h2>
+        <ol class="steps">
+          <li><span>Откройте эту страницу через ссылку проекта Nootiz, если для входа в режим комментариев требуется специальная ссылка.</span></li>
+          <li><span>Активируйте интерфейс заметок и нажмите на любой элемент страницы, например на заголовок или цветную карточку.</span></li>
+          <li><span>Сохраните заметку, затем проверьте её в панели Nootiz.</span></li>
+          <li><span>Для проверки email-уведомления создайте новую заметку либо измените статус существующей в панели проекта.</span></li>
+        </ol>
+        <div class="actions"><button type="button" class="button" id="check-button">Проверить кнопку</button><a class="button secondary" href="https://app.nootiz.com/" rel="noopener noreferrer" target="_blank" style="text-decoration:none">Открыть Nootiz</a></div>
+        <div class="feedback" role="status" aria-live="polite" id="test-result">Тестовая кнопка меняет текст только на этой странице и не создаёт заметку сама.</div>
+      </section>
+      <aside class="card" id="test-context">
+        <h2>Информация о подключении</h2>
+        <p>Подключён оригинальный скрипт вашего проекта. Для него не требуется собственный backend или SMTP-сервер.</p>
+        <p>При этом появление интерфейса Nootiz зависит от проекта, разрешений и способа открытия страницы. Само наличие скрипта не подтверждает, что заметка или email отправлены.</p>
+        <p><span class="status">Тип размещения:</span> статический сайт на Vercel.</p>
+        <p style="font-size:13px">ID сниппета: <code>6885dfb2-ff26-4c49-9062-197cb118a7e1</code></p>
+      </aside>
+    </div>
+
+    <div class="section-heading"><h2>Объекты для аннотаций</h2><p>Нажимайте на элементы в режиме Nootiz</p></div>
+    <section class="demo-grid" aria-label="Тестовые карточки">
+      <article class="card" id="example-card-one"><div class="demo-id">ЭЛЕМЕНТ / 01</div><div class="swatch" aria-hidden="true"></div><h2>Карточка дизайна</h2><p>Проверьте, можно ли закрепить замечание на декоративном блоке.</p></article>
+      <article class="card" id="example-card-two"><div class="demo-id">ЭЛЕМЕНТ / 02</div><div class="swatch s2" aria-hidden="true"></div><h2>Заголовок</h2><p>Оставьте заметку на этом тексте, затем найдите её в списке проекта.</p></article>
+      <article class="card" id="example-card-three"><div class="demo-id">ЭЛЕМЕНТ / 03</div><div class="swatch s3" aria-hidden="true"></div><h2>Третий объект</h2><p>Создайте второй комментарий, чтобы сравнить уведомления о разных событиях.</p></article>
+    </section>
+
+    <section class="card full" id="notification-disclaimer"><h2>Проверка уведомлений</h2><p>Nootiz управляет адресатами, содержанием и отправкой уведомлений на своей стороне. Эта демонстрационная страница не отправляет email самостоятельно и не подставляет внешние адреса получателей.</p></section>
   </main>
-
+  <footer><div class="wrap">Неофициальный тестовый стенд для проверки интеграции Nootiz. Без пользовательской аналитики, серверных обработчиков и сбора данных.</div></footer>
   <script>
-    document.getElementById('demoButton').addEventListener('click', function () {
-      document.getElementById('result').textContent = 'Button works!';
-    });
+    (function(){
+      var button=document.getElementById('check-button');
+      var result=document.getElementById('test-result');
+      if(button&&result){button.addEventListener('click',function(){result.textContent='Локальная кнопка работает. Для создания заметки включите режим комментариев Nootiz.';});}
+    })();
   </script>
-
-  <!-- Annot8: original installation snippet -->
-  <script
-    src="https://www.annot8.app/widget.js"
-    data-project-id="pj_8sCSQfNL6gyiWMINWidFmz7x"
-    data-convex-url="https://superb-snail-880.convex.cloud"
-    data-dashboard-url="https://www.annot8.app"
-    async
-  ></script>
 </body>
 </html>
-
