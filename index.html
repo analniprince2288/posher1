@@ -1,48 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1020">
-  <meta name="description" content="Send product feedback and suggestions through PushFeedback.">
-  <title>Feedback Portal | PushFeedback</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Hakanai Connect — тест комментариев</title>
   <style>
-    :root { color-scheme: dark; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    :root { color-scheme: light; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; color: #e9eefc; background: radial-gradient(circle at 75% 10%, #1c2851 0%, transparent 37%), #0b1020; }
-    .header { padding: 26px clamp(24px, 7vw, 100px); display: flex; justify-content: space-between; gap: 20px; align-items: center; border-bottom: 1px solid #ffffff12; }
-    .brand { color: #f9fbff; font-size: 17px; font-weight: 750; letter-spacing: -.4px; }
-    .header a { color: #b9c8ec; font-size: 13px; text-decoration: none; }
-    .header a:hover { color: white; }
-    main { max-width: 1050px; padding: clamp(65px, 10vw, 130px) clamp(24px, 7vw, 100px); margin: 0 auto; }
-    .eyebrow { color: #a0b5ec; text-transform: uppercase; font-weight: 700; font-size: 12px; letter-spacing: 2px; }
-    h1 { max-width: 700px; margin: 20px 0; font-size: clamp(42px, 6.5vw, 80px); line-height: 1.08; letter-spacing: -3px; }
-    .subtitle { color: #aab7d3; max-width: 560px; font-size: 18px; line-height: 1.7; }
-    .hint { display: inline-flex; max-width: 100%; margin-top: 42px; padding: 15px 19px; border: 1px solid #3b4e7e; border-radius: 13px; background: #17223bd9; color: #cedbf5; font-size: 14px; line-height: 1.55; }
-    .hint strong { color: white; }
-    footer { padding: 24px; text-align: center; color: #8595b8; font-size: 12px; }
-    @media (max-width: 540px) { h1 { letter-spacing: -1.7px; } .subtitle { font-size: 16px; } .header { padding: 20px 24px; } }
+    body { margin: 0; background: #f5f7fa; color: #202733; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 850px; margin: 64px auto; padding: 0 20px; }
+    .panel { background: #fff; border: 1px solid #e3e7ed; border-radius: 14px; padding: 32px; box-shadow: 0 5px 22px rgba(30,40,60,.04); }
+    h1 { margin: 0 0 12px; font-size: clamp(22px, 4vw, 30px); }
+    p { color: #596579; line-height: 1.6; margin: 0 0 28px; }
+    #hakanai-connect { min-height: 140px; }
+    @media (max-width: 600px) { main { margin: 28px auto; } .panel { padding: 22px; } }
   </style>
-
-  <!-- PushFeedback: official CDN embed -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pushfeedback/dist/pushfeedback/pushfeedback.css">
-  <script type="module" src="https://cdn.jsdelivr.net/npm/pushfeedback/dist/pushfeedback/pushfeedback.esm.js"></script>
 </head>
 <body>
-  <header class="header">
-    <div class="brand">Feedback Portal</div>
-    <a href="https://app.pushfeedback.com/" target="_blank" rel="noopener noreferrer">PushFeedback Dashboard</a>
-  </header>
-
   <main>
-    <div class="eyebrow">Feedback & suggestions</div>
-    <h1>Tell us what you think.</h1>
-    <p class="subtitle">Share an idea, report a problem, or let us know what could be improved. Your feedback helps us make the experience better.</p>
-    <div class="hint"><span>Click the <strong>Feedback</strong> tab on the right side of the screen to open the form. You can enter your message and submit it directly from this page.</span></div>
+    <section class="panel">
+      <h1>Комментарии</h1>
+      <p>Тестовая страница для проверки комментариев и уведомлений Hakanai Connect.</p>
+      <div id="hakanai-connect"></div>
+      <script async src="https://connect.hakanai.io/embed.js" data-key="dbe33d66-21ff-4b4e-89df-b7473f45e838"></script>
+    </section>
   </main>
-  <footer>Powered by PushFeedback</footer>
-
-  <!-- Your PushFeedback project (kept exactly as provided) -->
-  <feedback-button project="my4lsatnkb" button-position="center-right" modal-position="sidebar-right" button-style="dark">Feedback</feedback-button>
 </body>
 </html>
